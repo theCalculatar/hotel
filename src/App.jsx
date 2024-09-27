@@ -6,8 +6,24 @@ import Rooms from './component/room/Rooms'
 import Footer from './component/Footer'
 import RoomDetail from './component/detail/RoomDetail'
 import Reservation from './component/reservation/Reservation'
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import useDB from './hooks/useDB'
+import { initData } from './store/roomSlice'
+// import { rooms }
 
 function App() {
+  const { getRooms, rooms} = useDB()
+  const dispatch = useDispatch()
+  
+  //init data
+  useEffect(()=>{
+    getRooms()
+  },[])
+
+  useEffect(()=>{
+    dispatch(initData(rooms))
+  },[rooms])
 
   return (
     <BrowserRouter>

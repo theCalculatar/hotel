@@ -1,26 +1,15 @@
 import { Box, Stack, Typography } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 
 function Room() {
     
-    const imageList = [
-        {
-            image:'bedroom.jpg',
-            name:'classic room',
-            price:30
-        },
-        {
-            image:'bedroom2.jpg',
-            name:'Grand deluxe Room',
-            price:59
-        },
-        {
-            image:'resort.jpg',
-            name:'Ultra superior Room',
-            price:69
-        }
-    ]
-    const [bgImage,setBgImage] = useState(imageList[0].image)
+    const imageList = useSelector(state=>state.rooms.display)
+    const [bgImage,setBgImage] = useState({picture:''})
+    useEffect(()=>{
+        setBgImage(imageList[0]?.picture)
+    },[imageList])
+    
   return (
     <Box display={'flex'}  bgcolor={'white'} mt={7}>
         <Box>
@@ -36,13 +25,12 @@ function Room() {
                         {
                             imageList.map((value,key)=>{
                                 return(
-                                    <Box display={'flex'} p={1} pr={7} borderRadius={'5px'} gap sx={(value.image===bgImage)?{bgcolor:'#3F9BC0',boxShadow:' 0px 5px 5px -25px rgba(0, 0, 0, 0.25)',color:'white'}:{}
-                                                }
-                                        onClick={()=>setBgImage(value.image)}>
+                                    <Box display={'flex'} p={1} pr={7} borderRadius={'5px'} gap sx={(value.picture===bgImage)?{bgcolor:'#3F9BC0',boxShadow:' 0px 5px 5px -25px rgba(0, 0, 0, 0.25)',color:'white'}:{}}
+                                        onClick={()=>setBgImage(value.picture)}>
                                         <img key={key}
                                             width={129}
                                             height={80}
-                                            src={value.image}
+                                            src={value.picture}
                                             alt={value}
                                             />
                                         <Stack justifyContent={'center'}>
