@@ -7,7 +7,7 @@ function RoomR({room,num}) {
   return (
     <Card elevation={0} sx={{gap:9,display:'flex',width:'100%',alignItems:'start'}}>
       <CardMedia component={'img'}
-        image={room.image}
+        image={room.picture}
         sx={{py:3}}
         height={400}/>
         <Box py={3} alignItems={'end'} flex={1} display={'flex'} flexDirection={'column'}>
@@ -20,14 +20,9 @@ function RoomR({room,num}) {
               <Typography color='#CB4F50'>R{room.price}</Typography>
               <Typography >/night</Typography>
             </Stack>
-            <Typography fontSize={12} textAlign={'end'}>
-              Ullamcorper eros ac ultrices imperdiet Vivamus eros nibh,
-              dictum sed venenatis vitae, ornare eget magna. Etiam mattis,
-              felis eu interdum posuere, justo neque dictum saplen, eu
-              luctus neque nulla non ante. Quisque pharetra facilisis..
-            </Typography>
+            <Typography fontSize={12} textAlign={'end'}>{room.description}</Typography>
             <Stack mt={4} direction={'row'} justifyContent={'start'} alignItems={'center'} gap={1}>
-              <Link to={`/room/${room.id}`} style={{textDecoration:'none', color:'black',fontSize:12}}>View details</Link>
+              <Link to={{pathname:`/room/${room.id}`}} state={room}  style={{textDecoration:'none', color:'black',fontSize:12}}>View details</Link>
               <ArrowForwardIos sx={{width:10}} />
             </Stack>
           </Box>

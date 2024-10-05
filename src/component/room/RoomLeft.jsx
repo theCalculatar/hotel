@@ -4,7 +4,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 function RoomL({room,num}) {
-  // console.log(props)
   return (
     <Card elevation={0} sx={{gap:9,display:'flex',bgcolor:'transparent',alignItems:'start'}}>
       <Box bgcolor={'white'} py={5} ml={17} border={'1px #DCDCDC solid'} height={300} alignItems={'center'} justifyContent={'space-between'} gap={2} display={'flex'} flexDirection={'column'}>
@@ -17,27 +16,21 @@ function RoomL({room,num}) {
       </Box>
       <Box sx={{py:3}}>
         <Rating value={3.3} />
-        <Typography fontWeight={500} width={350} fontSize={41}>
-          Luxury with ultra
-          superior room
+        <Typography fontWeight={500} textTransform={'capitalize'} width={350} fontSize={41}>
+          {room.name}
         </Typography>
         <Stack direction={'row'} spacing={1}>
           <Typography >Start from</Typography>
-          <Typography color='#CB4F50'>$99.99</Typography>
+          <Typography color='#CB4F50'>R{room.price}</Typography>
           <Typography >/night</Typography>
         </Stack>
-        <Typography width={350} fontSize={12} >
-          Ullamcorper eros ac ultrices imperdiet Vivamus eros nibh,
-          dictum sed venenatis vitae, ornare eget magna. Etiam mattis,
-          felis eu interdum posuere, justo neque dictum saplen, eu
-          luctus neque nulla non ante. Quisque pharetra facilisis..
-        </Typography>
+        <Typography width={350} fontSize={12} >{room.description}</Typography>
         <Stack mt={4} direction={'row'} justifyContent={'start'} alignItems={'center'} gap={1}>
-              <Link to={`/room/${room.id}`} style={{textDecoration:'none', color:'black',fontSize:12}}>View details</Link>
+              <Link to={{pathname:`/room/${room.id}`}} state={room} style={{textDecoration:'none', color:'black',fontSize:12}}>View details</Link>
               <ArrowForwardIos sx={{width:10}} />
         </Stack>
       </Box>
-      <CardMedia component={'img'} image='bedroom.jpg'
+      <CardMedia component={'img'} image={room.picture}
         height={400} sx={{py:3}}/>
 
     </Card>

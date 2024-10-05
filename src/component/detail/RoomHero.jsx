@@ -6,7 +6,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
-function RoomHero() {
+function RoomHero({room}) {
     const imageList = [
        'bedroom2.jpg', 'beach.jpg','resort.jpg'
     ]
@@ -17,12 +17,10 @@ function RoomHero() {
     <LocalizationProvider dateAdapter={AdapterDayjs}>
 
 
-    <Box sx={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat',backgroundImage:`linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../${bgImage})`,
+    <Box sx={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat',backgroundImage:`linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(${room.picture})`,
         backgroundAttachment:'fixed',  backgroundPositionY:'bottom'}} px={17} height={468}>
         <Box display={'flex'}flexDirection={'column'} justifyContent={'center'} height={'100%'}>
-                <Typography   textAlign={'center'} fontWeight={500}color='white'  fontSize={64} >
-                    Classic Room
-                </Typography>
+            <Typography   textAlign={'center'} fontWeight={500}color='white'  fontSize={64} >{room.name}</Typography>
                 <Typography textAlign={'center'} color='white' fontSize={12}>
                     {'Home>Our room>Classic room'}
                 </Typography>

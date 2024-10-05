@@ -6,8 +6,8 @@ function ReviewCard({review}) {
     <Card elevation={0} sx={{display:'flex',gap:2}}>
         <img
             height={90}
-            src={review.image}/>
-        <CardContent sx={{bgcolor:'#F4F4F4'}}>
+            src={review.picture}/>
+        <CardContent sx={{bgcolor:'#F4F4F4',width:"100%"}}>
             <Box>
                 <Box display={'flex'} gap={1}>
                     <Typography variant="body1" fontWeight={600} >{review.name}</Typography>

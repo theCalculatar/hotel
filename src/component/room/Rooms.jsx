@@ -3,44 +3,16 @@ import React from 'react'
 import Hero from '../hero/Hero'
 import RoomL from './RoomLeft'
 import RoomR from './RoomRight'
+import { useSelector } from 'react-redux'
 
 function Rooms() {
-  const rooms = [
-    {
-      name:'Luxury room',
-      price:99.99,
-      description:`Ullamcorper eros ac ultrices imperdiet Vivamus eros nibh,
-                  dictum sed venenatis vitae, ornare eget magna. Etiam mattis,
-                  felis eu interdum posuere, justo neque dictum saplen, eu
-                  luctus neque nulla non ante. Quisque pharetra facilisis..`,
-      type:'Luxury Room'
-    },
-    {
-      name:'superior room',
-      price:99.99,
-      image:'bedroom.jpg',
-      description:`Ullamcorper eros ac ultrices imperdiet Vivamus eros nibh,
-                  dictum sed venenatis vitae, ornare eget magna. Etiam mattis,
-                  felis eu interdum posuere, justo neque dictum saplen, eu
-                  luctus neque nulla non ante. Quisque pharetra facilisis..`,
-      type:'Superior'
-    },
-    {
-      name:'Ultra superior room',
-      price:99.99,
-      description:`Ullamcorper eros ac ultrices imperdiet Vivamus eros nibh,
-                  dictum sed venenatis vitae, ornare eget magna. Etiam mattis,
-                  felis eu interdum posuere, justo neque dictum saplen, eu
-                  luctus neque nulla non ante. Quisque pharetra facilisis..`,
-      type:'Ultra room'
-    },
-  ]
+  const rooms = useSelector(state => state.rooms.rooms)
   return (
     <Box >
       <Hero />
       <Box mt={17} >
         {
-          rooms.map((room,key)=>{
+          rooms?.map((room,key)=>{
              if(key%2==0){
               return(<RoomL room={room} key={key} num={key+1}/>)
             } else{
