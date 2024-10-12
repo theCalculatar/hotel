@@ -1,17 +1,19 @@
 import { Box, Button, TextField, Typography } from '@mui/material'
 import React from 'react'
 import CardRoom from './CardRoom'
+import { useSelector } from 'react-redux'
 
 function Overview() {
+    const reservations = useSelector(state =>state.rooms.reservation)
   return (
     <Box width={"100%"} overflow={'hidden'} mb={7}>
         <Typography textAlign={'center'} fontWeight={600} fontSize={20} textTransform={'capitalize'} mt={7}>
             Your booking overview
         </Typography>
-        <Box p={4} mx={17} mt={4} display={'flex'} flexDirection={"column"} gap={4} bgcolor={'white'} boxShadow={'0px 4px 4px rgba(0, 0, 0, 0.25);'}>
-            <CardRoom/>
-            <CardRoom/>
-            <CardRoom/>
+        <Box p={4} mx={17} mt={4} display={'flex'}
+            flexDirection={"column"} gap={4} bgcolor={'white'}
+            boxShadow={'0px 4px 4px rgba(0, 0, 0, 0.25);'}>
+            {reservations?.map(reservation => <CardRoom reservation={reservation}/>)}
             <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'}>
                 <Box display={'flex'} mt={2} gap={2} alignItems={'center'}>
                     <Typography width={60} lineHeight={1.5} >

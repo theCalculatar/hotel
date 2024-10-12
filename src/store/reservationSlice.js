@@ -27,6 +27,6 @@ export const reservation =  createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { add, removeItem, editItem, initData } = reservation.actions
+export const { add, removeItem, editItem, initData } = reservationSlice.actions
 
-export default reservation.reducer
+export default reservationSlice.reducer

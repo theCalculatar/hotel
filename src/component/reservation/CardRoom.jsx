@@ -1,11 +1,11 @@
 import { Box, Card, CardContent, CardMedia, Rating, Stack, Typography } from '@mui/material'
 import React from 'react'
 
-function CardRoom() {
+function CardRoom({reservation}) {
   return (
     <Card sx={{display:'flex',p:0,borderRadius:0}} >
         <CardMedia
-            image='bedroom.jpg'
+            image={reservation.picture}
             component={'img'}
             sx={{width:'9rem',height:'max-contain',objectFit:'cover'}}
         />
@@ -13,11 +13,11 @@ function CardRoom() {
             <Box>
                 <Stack direction={'row'} alignItems={'center'}>
                     <Typography fontWeight={600} fontSize={20}>
-                        Classic room
+                        {reservation.name}
                     </Typography>
                     <Rating value={4} size='small'/>
                     <Typography >
-                        5 Reviews
+                        {reservation.reviews} Reviews
                     </Typography>
                 </Stack>
                 <Stack direction={'row'}>
@@ -25,7 +25,7 @@ function CardRoom() {
                         Includes:
                     </Typography>
                     <Typography color='#3F9BC0'>
-                        breakfast
+                        {reservation.meal?'Breakfast':'N/a'}
                     </Typography>
                 </Stack>
                 <Stack direction={'row'}>
@@ -43,7 +43,7 @@ function CardRoom() {
                         Price
                     </Typography>
                     <Typography color='#CD5454' >
-                        $59.00
+                        R{reservation.price}
                     </Typography>
                 {/* </Box> */}
     
